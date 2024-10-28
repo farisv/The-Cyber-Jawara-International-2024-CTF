@@ -10,7 +10,7 @@ Camera Judge Face Checker (CJNE), only the right face deserve the flag.
 N/A
 
 ## Release
-[camera-judge-face-checker_0.0.0_x64_en-US.msi](camera-judge-face-checker_0.0.0_x64_en-US.msi)
+[camera-judge-face-checker_0.0.0_x64_en-US.msi](release/camera-judge-face-checker_0.0.0_x64_en-US.msi)
 
 ## Deployment
 N/A
