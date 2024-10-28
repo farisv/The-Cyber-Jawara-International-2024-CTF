@@ -21,8 +21,8 @@ CTFTime Link: https://ctftime.org/event/2552
 ### Pwn
 | Challenge         | Author      |
 | ----------------- | ----------- |
-| Cryptology        | Zafir       |
-| backdoored_kernel | Zafir       |
+| Cryptology        | Zafirr      |
+| backdoored_kernel | Zafirr      |
 | babybrowser       | Linz        |
 | mipssshh          | Linz        |
 
