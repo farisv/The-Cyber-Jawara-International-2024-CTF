@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  jail:
+    image: misc-pygolfline:latest
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: any
+    ports:
+      - target: 10003
+        published: 10003
+        protocol: tcp

@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  cyberjawara:
+    container_name: backdoored_kernel 
+    restart: always
+    build:
+      context: .
+    ports:
+      - "10022:1337" # exposed:local
+    read_only: false

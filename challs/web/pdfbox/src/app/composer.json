@@ -1,0 +1,7 @@
+{
+    "require": {
+      "dompdf/dompdf": "^3.0",
+      "league/uri": "^7.4",
+      "symfony/intl": "^7.1"
+    }
+  }

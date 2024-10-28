@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pdfbox:
+    image: web-pdfbox:latest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: any
+    ports:
+      - target: 80
+        published: 20003
+        protocol: tcp

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  examplebox:
+    image: web-examplebox:latest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: any
+    ports:
+      - target: 20002
+        published: 20002
+        protocol: tcp

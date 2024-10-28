@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  examplebox:
+    build: .
+    ports:
+      - "20002:20002"

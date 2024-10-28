@@ -1,0 +1,15 @@
+version: '3'
+services:
+  chemistry-lab:
+    build:
+      context: .
+    working_dir: /home/usero
+    container_name: chemistry-lab
+    restart: always
+    ports:
+      - "4444:4444"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+      - 1.0.0.1

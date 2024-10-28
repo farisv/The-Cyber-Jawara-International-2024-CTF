@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  stone:
+    image: misc-stone:latest
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: any
+    ports:
+      - target: 10001
+        published: 10001
+        protocol: tcp

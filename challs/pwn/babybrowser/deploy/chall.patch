@@ -1,0 +1,61 @@
+diff --git a/src/builtins/builtins-definitions.h b/src/builtins/builtins-definitions.h
+index adbf76310da..d45f6a68fd3 100644
+--- a/src/builtins/builtins-definitions.h
++++ b/src/builtins/builtins-definitions.h
+@@ -647,6 +647,7 @@ namespace internal {
+   CPP(GlobalEscape)                                                            \
+   CPP(GlobalUnescape)                                                          \
+   CPP(GlobalEval)                                                              \
++  CPP(GlobalLinzIsHere)                                                        \
+   /* ES6 #sec-isfinite-number */                                               \
+   TFJ(GlobalIsFinite, kJSArgcReceiverSlots + 1, kReceiver, kNumber)            \
+   /* ES6 #sec-isnan-number */                                                  \
+diff --git a/src/builtins/builtins-global.cc b/src/builtins/builtins-global.cc
+index 137f7f34021..df992b70922 100644
+--- a/src/builtins/builtins-global.cc
++++ b/src/builtins/builtins-global.cc
+@@ -112,5 +112,11 @@ BUILTIN(GlobalEval) {
+       Execution::Call(isolate, function, target_global_proxy, 0, nullptr));
+ }
+ 
++BUILTIN(GlobalLinzIsHere) {
++  HandleScope scope(isolate);
++  int64_t linz = (int64_t)isolate;
++  return *isolate->factory()->NewNumberFromInt64(linz);
++}
++
+ }  // namespace internal
+ }  // namespace v8
+diff --git a/src/compiler/simplified-lowering.cc b/src/compiler/simplified-lowering.cc
+index 417234e9909..cbaabc8d7d5 100644
+--- a/src/compiler/simplified-lowering.cc
++++ b/src/compiler/simplified-lowering.cc
+@@ -1887,12 +1887,12 @@ class RepresentationSelector {
+                       MachineRepresentation::kWord32);
+         if (lower<T>()) {
+           if (index_type.IsNone() || length_type.IsNone() ||
+-              (index_type.Min() >= 0.0 &&
++              (index_type.Min() >= 0.0 ||
+                index_type.Max() < length_type.Min())) {
+             // The bounds check is redundant if we already know that
+             // the index is within the bounds of [0.0, length[.
+             // TODO(neis): Move this into TypedOptimization?
+-            if (v8_flags.turbo_typer_hardening) {
++            if (false) {
+               new_flags |= CheckBoundsFlag::kAbortOnOutOfBounds;
+             } else {
+               DeferReplacement(node, NodeProperties::GetValueInput(node, 0));
+diff --git a/src/init/bootstrapper.cc b/src/init/bootstrapper.cc
+index ce1540d2049..c5188f8f4a8 100644
+--- a/src/init/bootstrapper.cc
++++ b/src/init/bootstrapper.cc
+@@ -6098,6 +6098,9 @@ bool Genesis::InstallABunchOfRandomThings() {
+     native_context()->set_global_eval_fun(*eval);
+   }
+ 
++  InstallFunctionWithBuiltinId(isolate(), global_object, "linzishere",
++                              Builtin::kGlobalLinzIsHere, 0, false);
++
+   // Install Global.isFinite
+   InstallFunctionWithBuiltinId(isolate(), global_object, "isFinite",
+                                Builtin::kGlobalIsFinite, 1, true);

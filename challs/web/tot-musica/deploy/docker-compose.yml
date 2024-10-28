@@ -1,0 +1,44 @@
+
+services:
+    mysql:
+        image: mysql:latest
+        restart: always
+        build: ./database/
+        env_file:
+            - .env
+        volumes:
+            - ./database/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+
+    php:
+        image: php:8-fpm
+        restart: always
+        working_dir: /var/www
+        build: ./php/
+        environment:
+            docker: "true"
+        volumes:
+            - ./php:/var/www
+        depends_on:
+            - mysql
+
+    nginx:
+        image: nginx
+        restart: always
+        ports:
+            - "20004:80"
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+            - ./php/public/:/var/www/public/
+        depends_on:
+            - php
+
+    bot:
+        build: ./bot/
+        restart: always
+        env_file:
+            - .env
+        ports:
+            - 8182:8000
+        depends_on:
+            - nginx
+

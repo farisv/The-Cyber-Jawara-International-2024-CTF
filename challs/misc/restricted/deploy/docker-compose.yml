@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  jail:
+    image: misc-restricted:latest
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: any
+    ports:
+      - target: 10002
+        published: 10002
+        protocol: tcp

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  javabox:
+    build:
+      context: .
+    ports:
+      - "20001:20001"
+    volumes:
+      - gradle-cache-javabox:/home/gradle/.gradle
+
+volumes:
+  gradle-cache-javabox:
+    name: gradle-cache-javabox

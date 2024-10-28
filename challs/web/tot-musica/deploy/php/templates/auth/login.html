@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/css/login.css" />
+        <title>Tot Musica</title>
+    </head>
+    <body>
+        <div id="container">
+            <div id="left"></div>
+            <div id="right">
+                <h1 id="login">LOGIN</h1>
+                <br />
+                <center>{{message}}</center>
+                <form action="/auth/login" method="post">
+                    <input type="text" name="username" id="username" class="client-info" />
+                    <label for="username">Username</label>
+                    <input type="password" name="password" id="password" class="client-info" />
+                    <label for="password">Password</label>
+                    <input type="submit" id="submit" class="client-info" value="Submit" />
+                </form>
+                <center>Register <a href="/register">Here!</a></center>
+            </div>
+        </div>
+    </body>
+</html>

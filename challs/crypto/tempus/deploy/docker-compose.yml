@@ -1,0 +1,11 @@
+services:
+  tempus:
+    image: crypto-tempus
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 5000
+        published: 5000
+        protocol: tcp

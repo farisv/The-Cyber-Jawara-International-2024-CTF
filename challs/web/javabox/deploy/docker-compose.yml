@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  javabox:
+    image: web-javabox:latest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: any
+    ports:
+      - target: 20001
+        published: 20001
+        protocol: tcp
+    volumes:
+      - gradle-cache-javabox:/home/gradle/.gradle
+
+volumes:
+  gradle-cache-javabox:
+    name: gradle-cache-javabox

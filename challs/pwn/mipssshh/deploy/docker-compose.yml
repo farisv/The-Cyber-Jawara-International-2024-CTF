@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  cyberjawara:
+    container_name: mipssshh
+    restart: always
+    build:
+      context: .
+    working_dir: /challenge
+    ports:
+      - "10015:1337" # exposed:local
+    read_only: false

@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  pdfbox:
+    build: .
+    ports:
+      - "20003:80"

@@ -1,0 +1,10 @@
+version: '3.8'
+
+name: "exchange"
+
+services:
+  exchange:
+    build:
+      context: .
+    ports:
+      - "20003:20003"

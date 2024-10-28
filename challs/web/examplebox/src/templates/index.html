@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Proxy</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Web Proxy</h1>
+    <form method="POST" class="mt-4">
+      <div class="form-group">
+        <label for="url">Enter a URL</label>
+        <input type="url" class="form-control" id="url" name="url" placeholder="http://example.com" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Visit</button>
+    </form>
+
+    {% if url %}
+    <div class="mt-4">
+      <h3>Response Content:</h3>
+      <iframe src="/fetch_url?url={{ url }}" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>

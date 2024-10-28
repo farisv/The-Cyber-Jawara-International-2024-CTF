@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  cyberjawara:
+    image: pwn-cryptology:latest
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: any
+    ports:
+      - target: 1337
+        published: 10020
+        protocol: tcp
+    read_only: false

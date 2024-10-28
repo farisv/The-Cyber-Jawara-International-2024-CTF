@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, <span th:text="${username}"></span>!</h2>
+    <p>You are logged in as: <span th:text="${isAdmin} ? 'Admin (' + ${flag} + ')' : 'User'"></span></p>
+    <img src="/assets/box.jpg" alt="Welcome Image" class="welcome-img">
+    <a href="/logout" class="button">Logout</a>
+  </div>
+</body>
+</html>
